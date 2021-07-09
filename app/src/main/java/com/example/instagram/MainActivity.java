@@ -167,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         // specify which class to query
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.include(Post.KEY_CREATEDAT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 for( Post post: posts){
-                    Log.i(TAG, "Post: "+ post.getDescription()+ ", username: "+ post.getUser().getUsername());
+                    Log.i(TAG, "Post: "+ post.getDescription()+ ", username: "+ post.getUser().getUsername()+ post.getCreatedAt());
                 }
 
             }

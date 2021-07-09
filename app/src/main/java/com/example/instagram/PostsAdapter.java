@@ -1,6 +1,7 @@
 package com.example.instagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -46,7 +48,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         return posts.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
@@ -57,6 +59,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Post post) {
@@ -68,6 +72,25 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
         }
+
+        @Override
+        public void onClick(View v) {
+            // get item position
+            int position = getAdapterPosition();
+            // Make sure position is valid, and that it actually exists in the View
+            if(position!= RecyclerView.NO_POSITION){
+                // get the Post at the position, this won't work if the class is static
+                Post post = posts.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, PostDetailsActivity.class);
+                // Serialize the movie using parceler, use its short name as a key
+                intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(post));
+                // Show activity
+                context.startActivity(intent);
+            }
+
+        }
+
     }
 
     // Clean all elements of the recycler
@@ -79,5 +102,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         posts.addAll(list);
         notifyDataSetChanged();
     }
+
 
 }
