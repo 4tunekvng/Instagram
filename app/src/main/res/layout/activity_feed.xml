@@ -5,11 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FeedActivity">
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="411dp"
+        android:layout_height="507dp"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPosts"
@@ -18,5 +24,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="676dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,14 +48,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void loginUser(String username, String password){
-        Log.i(TAG, "Attempting to Login User"+ username);
 
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (e!=null){
                     // Better Error Handling
-                    Log.e(TAG, "Issue with Login", e);
                     Toast.makeText(LoginActivity.this, "Issue with Login:", Toast.LENGTH_SHORT);
                     return;
                 }

@@ -69,7 +69,6 @@ public class Post extends ParseObject {
                 return diff / DAY_MILLIS + " d";
             }
         } catch (Exception e) {
-            Log.i("Error:", "getRelativeTimeAgo failed", e);
             e.printStackTrace();
         }
 

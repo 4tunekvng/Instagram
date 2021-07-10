@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //queryPosts();
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,10 +152,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if(e!= null){
-                    Log.e(TAG, "Error while Saving", e);
                     Toast.makeText(MainActivity.this, "Error while Saving!", Toast.LENGTH_SHORT).show();
                 }
-                Log.i(TAG, "Post was Successful!!");
                 etDescription.setText(" ");
                 ivPostImage.setImageResource(0);
             }
@@ -172,11 +169,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> posts, ParseException e) {
                 if(e!= null){
-                    Log.e(TAG, "Issue with Getting Posts", e);
                     return;
-                }
-                for( Post post: posts){
-                    Log.i(TAG, "Post: "+ post.getDescription()+ ", username: "+ post.getUser().getUsername()+ post.getCreatedAt());
                 }
 
             }
