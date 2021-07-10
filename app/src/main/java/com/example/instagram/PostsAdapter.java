@@ -81,6 +81,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             }
         }
 
+
+        // On click handler
         @Override
         public void onClick(View v) {
             // get item position
@@ -106,6 +108,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         posts.clear();
         notifyDataSetChanged();
     }
+    // add posts to recycler
     public void addAll(List<Post> list) {
         posts.addAll(list);
         notifyDataSetChanged();

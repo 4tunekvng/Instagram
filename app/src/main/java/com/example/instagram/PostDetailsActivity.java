@@ -33,12 +33,14 @@ public class PostDetailsActivity extends AppCompatActivity {
         post = (Post) Parcels.unwrap(getIntent().getParcelableExtra(Post.class.getSimpleName()));
         Date createdAt = post.getCreatedAt();
         String timeAgo = post.calculateTimeAgo(createdAt);
-        //Bind the post data to the view elements
+
+        // find view elements
         tvDetailsUsername = findViewById(R.id.tvDetailsUsername);
         tvDetailsDescription = findViewById(R.id.tvDetailsDescription);
         ivDetailsImage = findViewById(R.id.ivDetailsImage);
         timeStamp = findViewById(R.id.timeStamp);
 
+        //Bind the post data to the view elements
         tvDetailsDescription.setText(post.getDescription());
         tvDetailsUsername.setText(post.getUser().getUsername());
         timeStamp.setText(timeAgo);
