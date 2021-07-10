@@ -66,6 +66,7 @@ public class FeedActivity extends AppCompatActivity {
 
     }
     private void queryPosts() {
+        //allPosts = new ArrayList<>();
         adapter.clear();
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);

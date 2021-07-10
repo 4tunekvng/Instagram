@@ -18,8 +18,8 @@
     <ImageView
         android:id="@+id/ivDetailsImage"
         android:layout_width="match_parent"
+        android:layout_height="352dp"
         android:layout_below="@id/tvDetailsUsername"
-        android:layout_height="414dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 

@@ -17,27 +17,29 @@ public class Post extends ParseObject {
     public static final String KEY_CREATEDAT ="createdAt";
 
     public String getDescription(){
+
         return getString(KEY_DESCRIPTION);
     }
     public void setDescription(String description){
+
         put(KEY_DESCRIPTION,description);
     }
     public ParseFile getImage(){
-        return getParseFile(KEY_IMAGE);
+        return
+                getParseFile(KEY_IMAGE);
     }
     public void setImage(ParseFile parseFile){
+
         put(KEY_IMAGE, parseFile);
     }
     public ParseUser getUser(){
         return getParseUser(KEY_USER);
     }
     public void setUser(ParseUser user){
+
         put(KEY_USER, user);
     }
 
-    /*public Date getCreatedAt(){
-        return getDate(KEY_CREATEDAT);
-    }*/
     public static String calculateTimeAgo(Date createdAt) {
 
         int SECOND_MILLIS = 1000;

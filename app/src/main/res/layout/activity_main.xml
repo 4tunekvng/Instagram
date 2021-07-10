@@ -66,9 +66,11 @@
         android:id="@+id/homeButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginStart="176dp"
+        android:backgroundTint="#F4F8F6"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.058"
-        app:srcCompat="@drawable/instagram_home_outline_24" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/instagram_home_filled_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

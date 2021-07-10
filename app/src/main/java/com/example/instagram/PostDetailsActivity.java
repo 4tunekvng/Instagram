@@ -16,6 +16,8 @@ import org.parceler.Parcels;
 
 import java.util.Date;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class PostDetailsActivity extends AppCompatActivity {
     private TextView tvDetailsUsername;
     private ImageView ivDetailsImage;
@@ -44,7 +46,13 @@ public class PostDetailsActivity extends AppCompatActivity {
         timeStamp.setText(timeAgo);
         ParseFile image = post.getImage();
         if (image != null) {
-            Glide.with(this).load(image.getUrl()).into(ivDetailsImage);
+            int radius = 100; // corner radius, higher value = more rounded
+            int margin = 0; // crop margin, set to 0 for corners with no crop
+            GlideApp.with(this)
+                    .load(image.getUrl())
+                    .fitCenter() // scale image to fill the entire ImageView
+                    .transform(new RoundedCornersTransformation(radius, margin))
+                    .into(ivDetailsImage);
         }
     }
 }

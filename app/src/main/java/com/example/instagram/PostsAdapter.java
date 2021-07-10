@@ -19,6 +19,8 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
@@ -69,7 +71,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvUsername.setText(post.getUser().getUsername());
             ParseFile image = post.getImage();
             if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivImage);
+                int radius = 50; // corner radius, higher value = more rounded
+                int margin = 0; // crop margin, set to 0 for corners with no crop
+                GlideApp.with(context)
+                        .load(image.getUrl())
+                        .fitCenter() // scale image to fill the entire ImageView
+                        .transform(new RoundedCornersTransformation(radius, margin))
+                        .into(ivImage);
             }
         }
 
